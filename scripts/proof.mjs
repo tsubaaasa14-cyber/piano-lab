@@ -31,8 +31,22 @@ await page.goto('http://127.0.0.1:4173/piano-lab/', { waitUntil: 'networkidle' }
 await page.waitForSelector('[data-song-id="twinkle"]');
 await page.screenshot({ path: path.join(outDir, 'home.png') });
 
+const before = await page.locator('.sound').getAttribute('data-state');
+console.log('sound before gesture', before);
 await page.locator('[data-song-id="twinkle"]').tap();
 await page.waitForSelector('.practice');
+const afterSong = await page.evaluate(() => {
+  const button = document.querySelector('.sound');
+  const keeper = document.querySelector('audio.ios-keep-alive');
+  return {
+    state: button?.getAttribute('data-state') ?? null,
+    ready: button?.classList.contains('is-ready') ?? false,
+    keeper: !!keeper,
+    keeperPaused: keeper ? keeper.paused : null,
+    session: navigator.audioSession?.type ?? null,
+  };
+});
+console.log('sound after song tap', afterSong);
 await page.waitForSelector('.key[data-pitch="C4"]');
 const white = await page.locator('.white-key').first().boundingBox();
 console.log('white key box', white);

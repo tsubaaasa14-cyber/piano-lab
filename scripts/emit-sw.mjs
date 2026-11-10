@@ -58,22 +58,32 @@ self.addEventListener('fetch', (event) => {
   if (url.origin !== self.location.origin) return;
   event.respondWith((async () => {
     const cache = await caches.open(CACHE);
-    // Vite adds Vary: Origin. Ignore it so a navigation or module request
-    // still hits the precache when the iPad is offline.
+    // Vite adds Vary: Origin. Ignore it so offline matches still hit.
     const match = (key) => cache.match(key, { ignoreVary: true });
-    const cached = await match(request) || (request.mode === 'navigate' ? await match(INDEX) || await match(ROOT) : undefined);
-    if (cached) return cached;
-    try {
-      const response = await fetch(request);
-      if (response.ok && response.type === 'basic') await cache.put(request, response.clone());
-      return response;
-    } catch (error) {
-      if (request.mode === 'navigate') {
-        const fallback = await match(INDEX) || await match(ROOT);
-        if (fallback) return fallback;
+    const path = url.pathname;
+    const isNavigation = request.mode === 'navigate' || path === ROOT || path === '/piano-lab';
+    if (isNavigation) {
+      // Network first so a reload after deploy picks up the new script,
+      // then fall back to the precache when the iPad is offline.
+      try {
+        const fresh = await fetch(request);
+        if (fresh.ok && fresh.type === 'basic') {
+          await cache.put(INDEX, fresh.clone());
+          await cache.put(ROOT, fresh.clone());
+          return fresh;
+        }
+      } catch {
+        /* offline */
       }
-      throw error;
+      const cached = (await match(request)) || (await match(INDEX)) || (await match(ROOT));
+      if (cached) return cached;
+      return new Response('', { status: 503, statusText: 'offline' });
     }
+    const cached = await match(request);
+    if (cached) return cached;
+    const response = await fetch(request);
+    if (response.ok && response.type === 'basic') await cache.put(request, response.clone());
+    return response;
   })());
 });
 `;
