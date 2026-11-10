@@ -44,6 +44,13 @@ Melodies live in `src/data/songs.json`. The player only understands this shape, 
 - One pitch at a time. `pitch: null` is a rest. No chords.
 - `picture` is `star`, `frog`, or `tulip`. Anything else still plays, with the star picture.
 - The keyboard drawn on screen is **C4–E5**. Notes outside that range still sound and show on the staff, but no key lights up.
+- A song with `youtubeId` and `startSec` shows ✨ on its card. On the practice screen, **with original** plays that YouTube video from `startSec` and moves the highlight with `player.getCurrentTime()`. **piano only** is the built-in piano. Note `i` starts at `startSec + (beats before i) × 60 / bpm`.
+
+To add another song from a local file (audio and cookies stay gitignored):
+
+```bash
+tools/add-song/.venv/bin/python tools/add-song/add_song.py --audio <file> --youtube-id <id> --title "曲名"
+```
 
 ## Develop
 

@@ -1,0 +1,17 @@
+# Python 3.12. basic-pitch 0.4 pins TensorFlow <2.15, which has no 3.12 wheel.
+# Install the stack, then Basic Pitch without its dependency pin:
+#   python3 -m venv tools/add-song/.venv
+#   tools/add-song/.venv/bin/pip install -r tools/add-song/requirements.txt
+#   tools/add-song/.venv/bin/pip install 'basic-pitch==0.4.0' --no-deps
+torch
+torchaudio
+demucs==4.0.1
+librosa>=0.10
+soundfile
+torchcrepe
+yt-dlp
+matplotlib
+tensorflow>=2.16
+onnxruntime
+pretty-midi
+mir-eval

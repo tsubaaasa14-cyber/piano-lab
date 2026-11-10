@@ -1,0 +1,126 @@
+[
+  {
+    "id": "touch",
+    "title": "Touch",
+    "reading": "たっち",
+    "romaji": "touch",
+    "aliases": [
+      "MAZZEL",
+      "まぜる",
+      "タッチ"
+    ],
+    "emoji": "💫",
+    "picture": "emoji",
+    "accent": "#7A4DFF",
+    "bpm": 103.36,
+    "meter": [
+      4,
+      4
+    ],
+    "youtubeId": "DN5JpXHDrLk",
+    "startSec": 37.686,
+    "melody": [
+      {
+        "pitch": "C4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "F4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "C4",
+        "beats": 1
+      },
+      {
+        "pitch": "A4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 2
+      },
+      {
+        "pitch": "E4",
+        "beats": 2
+      },
+      {
+        "pitch": "D4",
+        "beats": 1
+      },
+      {
+        "pitch": "C4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "D4",
+        "beats": 4
+      },
+      {
+        "pitch": "D4",
+        "beats": 1
+      },
+      {
+        "pitch": "C4",
+        "beats": 1
+      },
+      {
+        "pitch": "A4",
+        "beats": 1
+      },
+      {
+        "pitch": "C5",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "C4",
+        "beats": 2
+      },
+      {
+        "pitch": "D4",
+        "beats": 1
+      },
+      {
+        "pitch": "A4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "D4",
+        "beats": 2
+      },
+      {
+        "pitch": null,
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 2
+      }
+    ],
+    "origin": {
+      "type": "extraction",
+      "label": "MAZZEL「Touch」official MV, first chorus. Demucs vocals, torchcrepe pitch (checked against Basic Pitch and pyin), librosa beat. Three beats hand-corrected; see tools/add-song/README.md.",
+      "sourceUrl": "https://www.youtube.com/watch?v=DN5JpXHDrLk"
+    }
+  }
+]

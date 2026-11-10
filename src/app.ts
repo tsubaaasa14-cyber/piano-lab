@@ -7,6 +7,7 @@ import { renderScore, centerNote } from './score';
 import { filterSongs } from './search';
 import { songs } from './songs';
 import type { Song } from './types';
+import { OriginalVideo } from './youtube';
 
 const keys = buildKeyboard();
 const keyPitches = new Set(keys.map((key) => key.pitch));
@@ -34,6 +35,8 @@ export function mount(root: HTMLElement): void {
   let screen: { name: 'home' } | { name: 'practice'; song: Song } = { name: 'home' };
   let shown: number | null = null;
   let playing = false;
+  let mode: 'piano' | 'original' = 'piano';
+  let video: OriginalVideo | null = null;
 
   const unlock = () => {
     try {
@@ -90,15 +93,7 @@ export function mount(root: HTMLElement): void {
     if (scroller instanceof HTMLElement) centerNote(scroller, index);
   }
 
-  player.onIndex = (index) => {
-    if (index === shown) return;
-    shown = index;
-    applyHighlight(index);
-    if (index == null) scrollTo(0);
-    else scrollTo(index);
-  };
-
-  player.onState = (next) => {
+  function setPlaying(next: boolean): void {
     playing = next;
     const practice = root.querySelector('.practice');
     const button = root.querySelector('[data-action="play"]');
@@ -108,6 +103,39 @@ export function mount(root: HTMLElement): void {
       button.setAttribute('aria-label', next ? 'とめる' : 'うたをならす');
       button.setAttribute('aria-pressed', next ? 'true' : 'false');
     }
+  }
+
+  function showIndex(index: number | null): void {
+    if (index === shown) return;
+    shown = index;
+    applyHighlight(index);
+    scrollTo(index ?? 0);
+  }
+
+  function setMode(next: 'piano' | 'original'): void {
+    player.stop();
+    video?.pause();
+    mode = next;
+    const practice = root.querySelector('.practice');
+    if (practice instanceof HTMLElement) {
+      practice.classList.toggle('is-original', next === 'original');
+      practice.dataset.mode = next;
+    }
+    for (const button of root.querySelectorAll<HTMLButtonElement>('.mode-switch button')) {
+      const on = button.dataset.action === (next === 'original' ? 'mode-original' : 'mode-piano');
+      button.classList.toggle('is-on', on);
+      button.setAttribute('aria-pressed', on ? 'true' : 'false');
+    }
+  }
+
+  player.onIndex = (index) => {
+    if (mode !== 'piano') return;
+    showIndex(index);
+  };
+
+  player.onState = (next) => {
+    if (mode !== 'piano') return;
+    setPlaying(next);
   };
 
   function songCard(song: Song): HTMLButtonElement {
@@ -125,11 +153,21 @@ export function mount(root: HTMLElement): void {
     name.className = 'song-name';
     name.textContent = song.title;
     button.append(art, name);
+    if (song.youtubeId) {
+      const mark = document.createElement('span');
+      mark.className = 'yt-mark';
+      mark.textContent = '✨';
+      mark.setAttribute('aria-hidden', 'true');
+      button.append(mark);
+    }
     return button;
   }
 
   function showHome(): void {
     player.stop();
+    video?.destroy();
+    video = null;
+    mode = 'piano';
     playing = false;
     shown = null;
     screen = { name: 'home' };
@@ -222,6 +260,9 @@ export function mount(root: HTMLElement): void {
 
   function showPractice(song: Song): void {
     player.stop();
+    video?.destroy();
+    video = null;
+    mode = 'piano';
     playing = false;
     shown = null;
     screen = { name: 'practice', song };
@@ -254,6 +295,14 @@ export function mount(root: HTMLElement): void {
     heading.textContent = song.title;
     now.append(mini, heading);
     top.append(back, now);
+    if (song.youtubeId) {
+      practice.classList.add('has-youtube');
+      practice.dataset.mode = 'piano';
+      const modes = document.createElement('div');
+      modes.className = 'mode-switch';
+      modes.append(modeButton('piano only', 'mode-piano', true), modeButton('with original', 'mode-original', false));
+      top.append(modes);
+    }
 
     const scoreWrap = document.createElement('div');
     scoreWrap.className = 'score-wrap';
@@ -265,6 +314,19 @@ export function mount(root: HTMLElement): void {
     playhead.setAttribute('aria-hidden', 'true');
     playhead.innerHTML = mascotSvg();
     scoreWrap.append(scroller, playhead);
+
+    const stage = document.createElement('div');
+    stage.className = 'stage';
+    let host: HTMLDivElement | null = null;
+    if (song.youtubeId) {
+      const frame = document.createElement('div');
+      frame.className = 'yt-frame';
+      host = document.createElement('div');
+      host.className = 'yt-host';
+      frame.append(host);
+      stage.append(frame);
+    }
+    stage.append(scoreWrap);
 
     const piano = document.createElement('div');
     piano.className = 'piano';
@@ -300,10 +362,32 @@ export function mount(root: HTMLElement): void {
     html(play, stopIcon());
     dock.append(play);
 
-    practice.append(top, scoreWrap, piano, dock);
+    practice.append(top, stage, piano, dock);
     root.append(practice, soundButton(), turnHint());
+    if (host) {
+      video = new OriginalVideo(host, song);
+      video.onIndex = (index) => {
+        if (mode !== 'original') return;
+        showIndex(index);
+      };
+      video.onState = (next) => {
+        if (mode !== 'original') return;
+        setPlaying(next);
+      };
+      video.load();
+    }
     refreshSound();
     requestAnimationFrame(() => scrollTo(0));
+  }
+
+  function modeButton(label: string, action: string, on: boolean): HTMLButtonElement {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.dataset.action = action;
+    button.textContent = label;
+    button.classList.toggle('is-on', on);
+    button.setAttribute('aria-pressed', on ? 'true' : 'false');
+    return button;
   }
 
   function keyButton(spec: (typeof keys)[number], black: boolean): HTMLButtonElement {
@@ -378,7 +462,9 @@ export function mount(root: HTMLElement): void {
     const now = performance.now();
     // Ignore the click that follows touchend once sound is actually running.
     // If the context is still suspended, let the later click try again.
-    if (lastUi && lastUi.key === key && now - lastUi.at < 450 && audio.outputReady()) return;
+    // The original-video play button is the exception: one tap must seek once.
+    const videoGesture = key === 'action:play' && mode === 'original';
+    if (lastUi && lastUi.key === key && now - lastUi.at < 450 && (audio.outputReady() || videoGesture)) return;
     lastUi = { key, at: now };
     const navigates = Boolean(songButton) || (action instanceof HTMLElement && action.dataset.action === 'back');
     if (navigates && event.type === 'touchend' && event.cancelable) event.preventDefault();
@@ -405,13 +491,25 @@ export function mount(root: HTMLElement): void {
       showHome();
       return;
     }
+    if (action.dataset.action === 'mode-piano' || action.dataset.action === 'mode-original') {
+      setMode(action.dataset.action === 'mode-original' ? 'original' : 'piano');
+      return;
+    }
     if (action.dataset.action === 'play' && screen.name === 'practice') {
       unlock();
-      if (playing) player.stop();
-      else {
-        shown = null;
-        player.start(screen.song);
+      if (playing) {
+        player.stop();
+        video?.pause();
+        return;
       }
+      shown = null;
+      if (mode === 'original' && video) {
+        player.stop();
+        video.playFromGesture();
+        return;
+      }
+      video?.pause();
+      player.start(screen.song);
     }
   }
   root.addEventListener('touchend', onActivate);
