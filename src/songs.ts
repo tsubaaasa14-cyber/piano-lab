@@ -56,9 +56,17 @@ function parseSong(value: unknown, index: number): Song {
   if (!Array.isArray(value.melody) || value.melody.length === 0 || value.melody.length > 512) {
     throw new Error(`${label}.melody must have 1–512 notes`);
   }
+  const aliases = value.aliases === undefined ? [] : value.aliases;
+  if (!Array.isArray(aliases) || aliases.some((item) => typeof item !== 'string' || item.trim() === '')) {
+    throw new Error(`${label}.aliases must be non-empty strings`);
+  }
   return {
     id,
     title: requireString(value.title, `${label}.title`),
+    reading: requireString(value.reading, `${label}.reading`),
+    romaji: requireString(value.romaji, `${label}.romaji`),
+    aliases,
+    emoji: requireString(value.emoji, `${label}.emoji`),
     picture: requireString(value.picture, `${label}.picture`),
     accent,
     bpm,

@@ -23,9 +23,15 @@ document.addEventListener(
       event.preventDefault();
       return;
     }
-    const scroller = document.querySelector('.score-scroll');
     const target = event.target;
-    if (scroller && target instanceof Node && scroller.contains(target)) return;
+    if (!(target instanceof Node)) {
+      event.preventDefault();
+      return;
+    }
+    const scroller = (target instanceof Element ? target : target.parentElement)?.closest(
+      '.score-scroll, .picker-scroll, .recent-scroll',
+    );
+    if (scroller) return;
     event.preventDefault();
   },
   { passive: false },
