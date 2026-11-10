@@ -4,13 +4,9 @@ A small piano practice page for a young child (about 3–7), meant for an iPad i
 
 ## Songs
 
-Three built-in one-hand melodies, quarter and half notes only, around middle C:
+About 20 built-in one-hand melodies, mostly quarter and half notes, inside C4–E5. The picker is a picture grid. The search box matches hiragana, katakana, kanji aliases, and romaji (`かえる` and `kaeru` both find かえるのうた). Recently opened songs are kept in `localStorage`.
 
-| Picture | Song | Pitches |
-| --- | --- | --- |
-| Star | きらきら星 | C4–A4 |
-| Frog | かえるのうた | C4–A4 |
-| Tulips (red, white, yellow) | チューリップ | C4–G4 |
+ぞうさん and いぬのおまわりさん are still in copyright, so they are not in the library. うみ is omitted for the same reason. Sources for the tunes that are included are in each song's `origin` field in `src/data/songs.json`. Regenerate that file with `node scripts/library.mjs`.
 
 Colors match the usual kindergarten solfege: ド red, レ orange, ミ yellow, ファ green, ソ blue, ラ indigo, シ purple. The same color is on the note and on the key, so reading is optional.
 

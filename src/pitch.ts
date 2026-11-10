@@ -55,6 +55,11 @@ export function pitchToMidi(pitch: string): number {
   return (octave + 1) * 12 + semi;
 }
 
+/** Name used on the keyboard, so Bb4 lights the same key as A#4. */
+export function keyboardPitch(pitch: string): string {
+  return midiToPitch(pitchToMidi(pitch));
+}
+
 export function midiToPitch(midi: number): string {
   const name = NAMES[((midi % 12) + 12) % 12];
   const octave = Math.floor(midi / 12) - 1;

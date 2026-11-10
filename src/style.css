@@ -67,10 +67,11 @@ button {
 }
 
 .home {
-  display: grid;
-  grid-template-rows: auto minmax(0, 1fr);
-  padding: 16px 28px 22px;
+  display: flex;
+  flex-direction: column;
+  padding: 12px 18px 14px;
   gap: 8px;
+  min-height: 0;
 }
 
 .home-top {
@@ -82,8 +83,8 @@ button {
 }
 
 .mascot {
-  width: 108px;
-  height: 108px;
+  width: 72px;
+  height: 72px;
   flex: none;
   animation: rock 2.6s ease-in-out infinite;
   transform-origin: 50% 70%;
@@ -100,29 +101,150 @@ button {
 
 .home-title {
   margin: 0;
-  font-size: clamp(48px, 6vw, 72px);
+  font-size: clamp(36px, 4vw, 52px);
   letter-spacing: 0.04em;
   color: #ff6b4a;
-  text-shadow: 0 4px 0 #fff, 0 8px 0 rgba(255, 140, 90, 0.25);
+  text-shadow: 0 3px 0 #fff;
 }
 
-.home-cards {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 22px;
+.picker-top {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 8px;
+  flex: none;
+}
+
+.home-top {
+  flex: none;
+}
+
+.search {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  background: #fff;
+  border-radius: 999px;
+  border: 4px solid #ffb15a;
+  padding: 0 10px 0 22px;
+  box-shadow: 0 6px 0 rgba(70, 30, 20, 0.08);
+}
+
+.search-input {
+  flex: 1;
+  min-width: 0;
+  height: 68px;
+  border: 0;
+  background: transparent;
+  font: inherit;
+  font-size: 32px;
+  color: #4a3428;
+  user-select: text;
+  -webkit-user-select: text;
+}
+
+.search-input:focus {
+  outline: none;
+}
+
+.search-input::placeholder {
+  color: #c4a48a;
+}
+
+.search-input::-webkit-search-cancel-button,
+.search-input::-webkit-search-decoration {
+  display: none;
+}
+
+.search-clear {
+  width: 56px;
+  height: 56px;
+  flex: none;
+  border-radius: 50%;
+  background: #ffe7c4;
+  color: #ff6b4a;
+  font-size: 36px;
+  line-height: 1;
+}
+
+.picker-scroll {
+  flex: 1;
   min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  overscroll-behavior: contain;
+  touch-action: pan-y;
+  padding: 4px 4px 12px;
+  scrollbar-width: none;
+}
+
+.picker-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.recent-title {
+  margin: 4px 8px 8px;
+  font-size: 28px;
+}
+
+.recent-scroll {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  touch-action: pan-x;
+  padding-bottom: 8px;
+  scrollbar-width: none;
+}
+
+.recent-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.recent-scroll .song-card {
+  width: 210px;
+  flex: none;
+  min-height: 150px;
+}
+
+.song-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.empty {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.empty svg {
+  width: 180px;
+  height: 180px;
+}
+
+.empty-text {
+  margin: 0;
+  font-size: 48px;
+  color: #ff6b4a;
 }
 
 .song-card {
   --card: #3b49c9;
   background: var(--card);
-  border-radius: 36px;
-  box-shadow: 0 8px 0 rgba(70, 30, 20, 0.14), 0 16px 28px rgba(80, 40, 10, 0.12);
+  border-radius: 28px;
+  box-shadow: 0 7px 0 rgba(70, 30, 20, 0.14);
   display: flex;
   flex-direction: column;
-  min-height: 0;
-  padding: 14px 14px 16px;
-  gap: 8px;
+  min-height: 176px;
+  padding: 10px 10px 12px;
+  gap: 4px;
 }
 
 .song-card:active {
@@ -130,21 +252,38 @@ button {
   box-shadow: 0 3px 0 rgba(70, 30, 20, 0.14);
 }
 
-.song-art {
+.song-emoji,
+.emoji-art {
+  font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
+}
+
+.song-emoji {
   flex: 1;
-  min-height: 0;
-  background: rgba(255, 255, 255, 0.16);
-  border-radius: 28px;
+  display: grid;
+  place-items: center;
+  font-size: 72px;
+  line-height: 1;
+}
+
+.emoji-art {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  font-size: 48px;
+  line-height: 1;
 }
 
 .song-name {
   align-self: center;
+  max-width: 100%;
   background: #fff;
   color: #4a3428;
   border-radius: 999px;
-  font-size: clamp(22px, 2.4vw, 32px);
-  line-height: 1.1;
-  padding: 8px 18px 10px;
+  font-size: clamp(18px, 1.7vw, 26px);
+  line-height: 1.15;
+  padding: 6px 12px 7px;
+  text-align: center;
 }
 
 .practice {

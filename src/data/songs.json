@@ -1,131 +1,2915 @@
 [
   {
+    "picture": "star",
+    "meter": [
+      4,
+      4
+    ],
+    "origin": {
+      "type": "builtin",
+      "label": "French folk tune (Ah! vous dirai-je, maman), same melody as Twinkle, Twinkle, Little Star. Full tune, quarter and half notes.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Twinkle,_Twinkle,_Little_Star"
+    },
+    "melody": [
+      {
+        "pitch": "C4",
+        "beats": 1
+      },
+      {
+        "pitch": "C4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "A4",
+        "beats": 1
+      },
+      {
+        "pitch": "A4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 2
+      },
+      {
+        "pitch": "F4",
+        "beats": 1
+      },
+      {
+        "pitch": "F4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "D4",
+        "beats": 1
+      },
+      {
+        "pitch": "D4",
+        "beats": 1
+      },
+      {
+        "pitch": "C4",
+        "beats": 2
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "F4",
+        "beats": 1
+      },
+      {
+        "pitch": "F4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "D4",
+        "beats": 2
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "F4",
+        "beats": 1
+      },
+      {
+        "pitch": "F4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "D4",
+        "beats": 2
+      },
+      {
+        "pitch": "C4",
+        "beats": 1
+      },
+      {
+        "pitch": "C4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "A4",
+        "beats": 1
+      },
+      {
+        "pitch": "A4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 2
+      },
+      {
+        "pitch": "F4",
+        "beats": 1
+      },
+      {
+        "pitch": "F4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "D4",
+        "beats": 1
+      },
+      {
+        "pitch": "D4",
+        "beats": 1
+      },
+      {
+        "pitch": "C4",
+        "beats": 2
+      }
+    ],
     "id": "twinkle",
     "title": "きらきら星",
-    "picture": "star",
+    "emoji": "⭐",
+    "reading": "きらきらぼし",
+    "romaji": "kirakiraboshi",
+    "aliases": [
+      "星",
+      "twinkle",
+      "little star"
+    ],
     "accent": "#3B49C9",
-    "bpm": 88,
-    "meter": [4, 4],
-    "origin": { "type": "builtin", "label": "nursery rhyme" },
-    "melody": [
-      { "pitch": "C4", "beats": 1 },
-      { "pitch": "C4", "beats": 1 },
-      { "pitch": "G4", "beats": 1 },
-      { "pitch": "G4", "beats": 1 },
-      { "pitch": "A4", "beats": 1 },
-      { "pitch": "A4", "beats": 1 },
-      { "pitch": "G4", "beats": 2 },
-      { "pitch": "F4", "beats": 1 },
-      { "pitch": "F4", "beats": 1 },
-      { "pitch": "E4", "beats": 1 },
-      { "pitch": "E4", "beats": 1 },
-      { "pitch": "D4", "beats": 1 },
-      { "pitch": "D4", "beats": 1 },
-      { "pitch": "C4", "beats": 2 },
-      { "pitch": "G4", "beats": 1 },
-      { "pitch": "G4", "beats": 1 },
-      { "pitch": "F4", "beats": 1 },
-      { "pitch": "F4", "beats": 1 },
-      { "pitch": "E4", "beats": 1 },
-      { "pitch": "E4", "beats": 1 },
-      { "pitch": "D4", "beats": 2 },
-      { "pitch": "G4", "beats": 1 },
-      { "pitch": "G4", "beats": 1 },
-      { "pitch": "F4", "beats": 1 },
-      { "pitch": "F4", "beats": 1 },
-      { "pitch": "E4", "beats": 1 },
-      { "pitch": "E4", "beats": 1 },
-      { "pitch": "D4", "beats": 2 },
-      { "pitch": "C4", "beats": 1 },
-      { "pitch": "C4", "beats": 1 },
-      { "pitch": "G4", "beats": 1 },
-      { "pitch": "G4", "beats": 1 },
-      { "pitch": "A4", "beats": 1 },
-      { "pitch": "A4", "beats": 1 },
-      { "pitch": "G4", "beats": 2 },
-      { "pitch": "F4", "beats": 1 },
-      { "pitch": "F4", "beats": 1 },
-      { "pitch": "E4", "beats": 1 },
-      { "pitch": "E4", "beats": 1 },
-      { "pitch": "D4", "beats": 1 },
-      { "pitch": "D4", "beats": 1 },
-      { "pitch": "C4", "beats": 2 }
-    ]
+    "bpm": 88
   },
   {
+    "picture": "frog",
+    "meter": [
+      4,
+      4
+    ],
+    "origin": {
+      "type": "builtin",
+      "label": "Traditional Japanese round. One statement of the tune; the croaks are eight even C notes.",
+      "sourceUrl": "https://ja.wikipedia.org/wiki/%E3%81%8B%E3%81%88%E3%82%8B%E3%81%AE%E5%90%88%E5%94%B1"
+    },
+    "melody": [
+      {
+        "pitch": "C4",
+        "beats": 1
+      },
+      {
+        "pitch": "D4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "F4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "D4",
+        "beats": 1
+      },
+      {
+        "pitch": "C4",
+        "beats": 2
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "F4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "A4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "F4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 2
+      },
+      {
+        "pitch": "C4",
+        "beats": 1
+      },
+      {
+        "pitch": "C4",
+        "beats": 1
+      },
+      {
+        "pitch": "C4",
+        "beats": 1
+      },
+      {
+        "pitch": "C4",
+        "beats": 1
+      },
+      {
+        "pitch": "C4",
+        "beats": 1
+      },
+      {
+        "pitch": "C4",
+        "beats": 1
+      },
+      {
+        "pitch": "C4",
+        "beats": 1
+      },
+      {
+        "pitch": "C4",
+        "beats": 1
+      },
+      {
+        "pitch": "C4",
+        "beats": 1
+      },
+      {
+        "pitch": "D4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "F4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "D4",
+        "beats": 1
+      },
+      {
+        "pitch": "C4",
+        "beats": 2
+      }
+    ],
     "id": "frog",
     "title": "かえるのうた",
-    "picture": "frog",
+    "emoji": "🐸",
+    "reading": "かえるのうた",
+    "romaji": "kaerunouta",
+    "aliases": [
+      "蛙",
+      "かえる",
+      "frog"
+    ],
     "accent": "#1E9D57",
-    "bpm": 104,
-    "meter": [4, 4],
-    "origin": { "type": "builtin", "label": "nursery rhyme" },
-    "melody": [
-      { "pitch": "C4", "beats": 1 },
-      { "pitch": "D4", "beats": 1 },
-      { "pitch": "E4", "beats": 1 },
-      { "pitch": "F4", "beats": 1 },
-      { "pitch": "E4", "beats": 1 },
-      { "pitch": "D4", "beats": 1 },
-      { "pitch": "C4", "beats": 2 },
-      { "pitch": "E4", "beats": 1 },
-      { "pitch": "F4", "beats": 1 },
-      { "pitch": "G4", "beats": 1 },
-      { "pitch": "A4", "beats": 1 },
-      { "pitch": "G4", "beats": 1 },
-      { "pitch": "F4", "beats": 1 },
-      { "pitch": "E4", "beats": 2 },
-      { "pitch": "C4", "beats": 1 },
-      { "pitch": "C4", "beats": 1 },
-      { "pitch": "C4", "beats": 1 },
-      { "pitch": "C4", "beats": 1 },
-      { "pitch": "C4", "beats": 1 },
-      { "pitch": "C4", "beats": 1 },
-      { "pitch": "C4", "beats": 1 },
-      { "pitch": "C4", "beats": 1 },
-      { "pitch": "C4", "beats": 1 },
-      { "pitch": "D4", "beats": 1 },
-      { "pitch": "E4", "beats": 1 },
-      { "pitch": "F4", "beats": 1 },
-      { "pitch": "E4", "beats": 1 },
-      { "pitch": "D4", "beats": 1 },
-      { "pitch": "C4", "beats": 2 }
-    ]
+    "bpm": 100
   },
   {
+    "picture": "tulip",
+    "meter": [
+      4,
+      4
+    ],
+    "origin": {
+      "type": "builtin",
+      "label": "School song as commonly sung in C (ドレミ ドレミ ソミレド). Held notes stand in for rests. Often credited to 井上武士.",
+      "sourceUrl": "https://ja.wikipedia.org/wiki/%E3%83%81%E3%83%A5%E3%83%BC%E3%83%AA%E3%83%83%E3%83%97_(%E6%AD%8C)"
+    },
+    "melody": [
+      {
+        "pitch": "C4",
+        "beats": 1
+      },
+      {
+        "pitch": "D4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 2
+      },
+      {
+        "pitch": "C4",
+        "beats": 1
+      },
+      {
+        "pitch": "D4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 2
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "D4",
+        "beats": 1
+      },
+      {
+        "pitch": "C4",
+        "beats": 1
+      },
+      {
+        "pitch": "D4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "D4",
+        "beats": 2
+      },
+      {
+        "pitch": "C4",
+        "beats": 1
+      },
+      {
+        "pitch": "D4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 2
+      },
+      {
+        "pitch": "C4",
+        "beats": 1
+      },
+      {
+        "pitch": "D4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 2
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "D4",
+        "beats": 1
+      },
+      {
+        "pitch": "C4",
+        "beats": 1
+      },
+      {
+        "pitch": "D4",
+        "beats": 1
+      },
+      {
+        "pitch": "C4",
+        "beats": 3
+      }
+    ],
     "id": "tulip",
     "title": "チューリップ",
-    "picture": "tulip",
+    "emoji": "🌷",
+    "reading": "ちゅーりっぷ",
+    "romaji": "churippu",
+    "aliases": [
+      "郁金香",
+      "tulip"
+    ],
     "accent": "#E84B73",
-    "bpm": 84,
-    "meter": [4, 4],
-    "origin": { "type": "builtin", "label": "nursery rhyme" },
+    "bpm": 84
+  },
+  {
+    "picture": "emoji",
+    "meter": [
+      4,
+      4
+    ],
+    "origin": {
+      "type": "builtin",
+      "label": "Folk tune (Bohemian/German) used for ぶんぶんぶん. Even quarters; the hook is ソファミレ ミファレド.",
+      "sourceUrl": "https://ja.wikipedia.org/wiki/%E3%81%B6%E3%82%93%E3%81%B6%E3%82%93%E3%81%B6%E3%82%93"
+    },
     "melody": [
-      { "pitch": "C4", "beats": 1 },
-      { "pitch": "D4", "beats": 1 },
-      { "pitch": "E4", "beats": 2 },
-      { "pitch": "C4", "beats": 1 },
-      { "pitch": "D4", "beats": 1 },
-      { "pitch": "E4", "beats": 2 },
-      { "pitch": "G4", "beats": 1 },
-      { "pitch": "E4", "beats": 1 },
-      { "pitch": "D4", "beats": 1 },
-      { "pitch": "C4", "beats": 1 },
-      { "pitch": "D4", "beats": 1 },
-      { "pitch": "E4", "beats": 1 },
-      { "pitch": "D4", "beats": 2 },
-      { "pitch": "C4", "beats": 1 },
-      { "pitch": "D4", "beats": 1 },
-      { "pitch": "E4", "beats": 2 },
-      { "pitch": "C4", "beats": 1 },
-      { "pitch": "D4", "beats": 1 },
-      { "pitch": "E4", "beats": 2 },
-      { "pitch": "G4", "beats": 1 },
-      { "pitch": "E4", "beats": 1 },
-      { "pitch": "D4", "beats": 1 },
-      { "pitch": "C4", "beats": 1 },
-      { "pitch": "D4", "beats": 1 },
-      { "pitch": "C4", "beats": 3 }
-    ]
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "F4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "D4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "F4",
+        "beats": 1
+      },
+      {
+        "pitch": "D4",
+        "beats": 1
+      },
+      {
+        "pitch": "C4",
+        "beats": 2
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "F4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "D4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "F4",
+        "beats": 1
+      },
+      {
+        "pitch": "D4",
+        "beats": 2
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "F4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "D4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "F4",
+        "beats": 1
+      },
+      {
+        "pitch": "D4",
+        "beats": 2
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "F4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "D4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "F4",
+        "beats": 1
+      },
+      {
+        "pitch": "D4",
+        "beats": 1
+      },
+      {
+        "pitch": "C4",
+        "beats": 2
+      }
+    ],
+    "id": "bee",
+    "title": "ぶんぶんぶん",
+    "emoji": "🐝",
+    "reading": "ぶんぶんぶん",
+    "romaji": "bunbunbun",
+    "aliases": [
+      "蜂",
+      "bee"
+    ],
+    "accent": "#F0A202",
+    "bpm": 96
+  },
+  {
+    "picture": "emoji",
+    "meter": [
+      4,
+      4
+    ],
+    "origin": {
+      "type": "builtin",
+      "label": "文部省唱歌. Solfege from the school song (ソソソミ ドドドレ…, then ソドドソ with the higher do). Dotted rhythm evened to quarters.",
+      "sourceUrl": "https://ja.wikipedia.org/wiki/%E3%81%8B%E3%81%9F%E3%81%A4%E3%82%80%E3%82%8A_(%E5%94%B1%E6%AD%8C)"
+    },
+    "melody": [
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "C4",
+        "beats": 1
+      },
+      {
+        "pitch": "C4",
+        "beats": 1
+      },
+      {
+        "pitch": "C4",
+        "beats": 1
+      },
+      {
+        "pitch": "D4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "D4",
+        "beats": 1
+      },
+      {
+        "pitch": "C4",
+        "beats": 1
+      },
+      {
+        "pitch": "D4",
+        "beats": 2
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "F4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "A4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "D4",
+        "beats": 1
+      },
+      {
+        "pitch": "D4",
+        "beats": 1
+      },
+      {
+        "pitch": "C4",
+        "beats": 1
+      },
+      {
+        "pitch": "D4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 2
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "C5",
+        "beats": 1
+      },
+      {
+        "pitch": "C5",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "C4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "D4",
+        "beats": 1
+      },
+      {
+        "pitch": "C4",
+        "beats": 2
+      }
+    ],
+    "id": "snail",
+    "title": "かたつむり",
+    "emoji": "🐌",
+    "reading": "かたつむり",
+    "romaji": "katatsumuri",
+    "aliases": [
+      "蝸牛",
+      "でんでんむし"
+    ],
+    "accent": "#7A8F3A",
+    "bpm": 92
+  },
+  {
+    "picture": "emoji",
+    "meter": [
+      4,
+      4
+    ],
+    "origin": {
+      "type": "builtin",
+      "label": "青木存義 / 梁田貞, 1921. Public domain (Wikipedia: 国内の保護期間は満了). Solfege ソミミファミレド. Dotted rhythm evened to quarters.",
+      "sourceUrl": "https://ja.wikipedia.org/wiki/%E3%81%A9%E3%82%93%E3%81%90%E3%82%8A%E3%81%93%E3%82%8D%E3%81%93%E3%82%8D"
+    },
+    "melody": [
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "F4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "D4",
+        "beats": 1
+      },
+      {
+        "pitch": "C4",
+        "beats": 2
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "D4",
+        "beats": 2
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "A4",
+        "beats": 1
+      },
+      {
+        "pitch": "A4",
+        "beats": 1
+      },
+      {
+        "pitch": "A4",
+        "beats": 1
+      },
+      {
+        "pitch": "C5",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 2
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "F4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "D4",
+        "beats": 1
+      },
+      {
+        "pitch": "C4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "D4",
+        "beats": 2
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "A4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "A4",
+        "beats": 1
+      },
+      {
+        "pitch": "A4",
+        "beats": 1
+      },
+      {
+        "pitch": "B4",
+        "beats": 1
+      },
+      {
+        "pitch": "B4",
+        "beats": 1
+      },
+      {
+        "pitch": "C5",
+        "beats": 2
+      }
+    ],
+    "id": "acorn",
+    "title": "どんぐりころころ",
+    "emoji": "🌰",
+    "reading": "どんぐりころころ",
+    "romaji": "dongurikorokoro",
+    "aliases": [
+      "団栗",
+      "donguri"
+    ],
+    "accent": "#C47B2B",
+    "bpm": 96
+  },
+  {
+    "picture": "emoji",
+    "meter": [
+      4,
+      4
+    ],
+    "origin": {
+      "type": "builtin",
+      "label": "Folk tune (long thought Spanish, now usually given as German). Opening ソミミ ファレレ ドレミファソソソ. Eighths evened to quarters.",
+      "sourceUrl": "https://ja.wikipedia.org/wiki/%E3%81%A1%E3%82%87%E3%81%86%E3%81%A1%E3%82%87%E3%81%86"
+    },
+    "melody": [
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 2
+      },
+      {
+        "pitch": "F4",
+        "beats": 1
+      },
+      {
+        "pitch": "D4",
+        "beats": 1
+      },
+      {
+        "pitch": "D4",
+        "beats": 2
+      },
+      {
+        "pitch": "C4",
+        "beats": 1
+      },
+      {
+        "pitch": "D4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "F4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 2
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "F4",
+        "beats": 1
+      },
+      {
+        "pitch": "D4",
+        "beats": 1
+      },
+      {
+        "pitch": "D4",
+        "beats": 1
+      },
+      {
+        "pitch": "D4",
+        "beats": 1
+      },
+      {
+        "pitch": "C4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 2
+      }
+    ],
+    "id": "butterfly",
+    "title": "ちょうちょう",
+    "emoji": "🦋",
+    "reading": "ちょうちょう",
+    "romaji": "chouchou",
+    "aliases": [
+      "蝶",
+      "蝶々",
+      "butterfly"
+    ],
+    "accent": "#F25C8A",
+    "bpm": 92
+  },
+  {
+    "picture": "emoji",
+    "meter": [
+      4,
+      4
+    ],
+    "origin": {
+      "type": "builtin",
+      "label": "American folk song Mary Had a Little Lamb. Quarter notes, phrase ends held.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Mary_Had_a_Little_Lamb"
+    },
+    "melody": [
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "D4",
+        "beats": 1
+      },
+      {
+        "pitch": "C4",
+        "beats": 1
+      },
+      {
+        "pitch": "D4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 2
+      },
+      {
+        "pitch": "D4",
+        "beats": 1
+      },
+      {
+        "pitch": "D4",
+        "beats": 1
+      },
+      {
+        "pitch": "D4",
+        "beats": 2
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 2
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "D4",
+        "beats": 1
+      },
+      {
+        "pitch": "C4",
+        "beats": 1
+      },
+      {
+        "pitch": "D4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 2
+      },
+      {
+        "pitch": "D4",
+        "beats": 1
+      },
+      {
+        "pitch": "D4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "D4",
+        "beats": 1
+      },
+      {
+        "pitch": "C4",
+        "beats": 2
+      }
+    ],
+    "id": "mary",
+    "title": "メリーさんのひつじ",
+    "emoji": "🐑",
+    "reading": "めりーさんのひつじ",
+    "romaji": "merisannohitsuji",
+    "aliases": [
+      "羊",
+      "mary",
+      "little lamb"
+    ],
+    "accent": "#8D7355",
+    "bpm": 100
+  },
+  {
+    "picture": "emoji",
+    "meter": [
+      4,
+      4
+    ],
+    "origin": {
+      "type": "builtin",
+      "label": "English folk song London Bridge Is Falling Down, in C. Phrase ends held.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/London_Bridge_Is_Falling_Down"
+    },
+    "melody": [
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "A4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "F4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "F4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 2
+      },
+      {
+        "pitch": "D4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "F4",
+        "beats": 2
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "F4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 2
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "A4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "F4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "F4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 2
+      },
+      {
+        "pitch": "D4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 2
+      },
+      {
+        "pitch": "C4",
+        "beats": 2
+      }
+    ],
+    "id": "london",
+    "title": "ロンドン橋",
+    "emoji": "🌉",
+    "reading": "ろんどんばし",
+    "romaji": "rondonbashi",
+    "aliases": [
+      "橋",
+      "london",
+      "london bridge"
+    ],
+    "accent": "#3D7EA6",
+    "bpm": 104
+  },
+  {
+    "picture": "emoji",
+    "meter": [
+      4,
+      4
+    ],
+    "origin": {
+      "type": "builtin",
+      "label": "Same French folk tune as きらきら星, but only the open-and-shut section (no middle phrase).",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Ah!_vous_dirai-je,_maman"
+    },
+    "melody": [
+      {
+        "pitch": "C4",
+        "beats": 1
+      },
+      {
+        "pitch": "C4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "A4",
+        "beats": 1
+      },
+      {
+        "pitch": "A4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 2
+      },
+      {
+        "pitch": "F4",
+        "beats": 1
+      },
+      {
+        "pitch": "F4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "D4",
+        "beats": 1
+      },
+      {
+        "pitch": "D4",
+        "beats": 1
+      },
+      {
+        "pitch": "C4",
+        "beats": 2
+      },
+      {
+        "pitch": "C4",
+        "beats": 1
+      },
+      {
+        "pitch": "C4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "A4",
+        "beats": 1
+      },
+      {
+        "pitch": "A4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 2
+      },
+      {
+        "pitch": "F4",
+        "beats": 1
+      },
+      {
+        "pitch": "F4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "D4",
+        "beats": 1
+      },
+      {
+        "pitch": "D4",
+        "beats": 1
+      },
+      {
+        "pitch": "C4",
+        "beats": 2
+      }
+    ],
+    "id": "open-shut",
+    "title": "むすんでひらいて",
+    "emoji": "👐",
+    "reading": "むすんでひらいて",
+    "romaji": "musundehiraite",
+    "aliases": [
+      "結んで開いて",
+      "musunde"
+    ],
+    "accent": "#F28C28",
+    "bpm": 88
+  },
+  {
+    "picture": "emoji",
+    "meter": [
+      4,
+      4
+    ],
+    "origin": {
+      "type": "builtin",
+      "label": "English folk song Under the Spreading Chestnut Tree, in C. Shortened and evened.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/The_Chestnut_Tree"
+    },
+    "melody": [
+      {
+        "pitch": "C4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "C5",
+        "beats": 1
+      },
+      {
+        "pitch": "A4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "C4",
+        "beats": 2
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "A4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 2
+      },
+      {
+        "pitch": "C4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "C5",
+        "beats": 1
+      },
+      {
+        "pitch": "A4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "D4",
+        "beats": 1
+      },
+      {
+        "pitch": "C4",
+        "beats": 2
+      }
+    ],
+    "id": "chestnut",
+    "title": "大きな栗の木の下で",
+    "emoji": "🌳",
+    "reading": "おおきなくりのきのしたで",
+    "romaji": "ookinakurinokinoshitade",
+    "aliases": [
+      "栗",
+      "chestnut"
+    ],
+    "accent": "#2E7D4F",
+    "bpm": 96
+  },
+  {
+    "picture": "emoji",
+    "meter": [
+      4,
+      4
+    ],
+    "origin": {
+      "type": "builtin",
+      "label": "Traditional children's song (はとぽっぽ). Opening ミソソソミ ドドラソミ. Rhythm evened.",
+      "sourceUrl": "https://ja.wikipedia.org/wiki/%E9%B3%A9%E3%81%BD%E3%81%A3%E3%81%BD"
+    },
+    "melody": [
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 2
+      },
+      {
+        "pitch": "C5",
+        "beats": 1
+      },
+      {
+        "pitch": "C5",
+        "beats": 1
+      },
+      {
+        "pitch": "A4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 2
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "A4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 2
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "D4",
+        "beats": 1
+      },
+      {
+        "pitch": "C4",
+        "beats": 2
+      }
+    ],
+    "id": "pigeon",
+    "title": "はとぽっぽ",
+    "emoji": "🕊️",
+    "reading": "はとぽっぽ",
+    "romaji": "hatopoppo",
+    "aliases": [
+      "鳩",
+      "hato",
+      "pigeon"
+    ],
+    "accent": "#8E9AAF",
+    "bpm": 96
+  },
+  {
+    "picture": "emoji",
+    "meter": [
+      4,
+      4
+    ],
+    "origin": {
+      "type": "builtin",
+      "label": "American folk tune For He's a Jolly Good Fellow / The Bear Went Over the Mountain. Even quarters, in C.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/For_He%27s_a_Jolly_Good_Fellow"
+    },
+    "melody": [
+      {
+        "pitch": "C4",
+        "beats": 1
+      },
+      {
+        "pitch": "C4",
+        "beats": 1
+      },
+      {
+        "pitch": "D4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "D4",
+        "beats": 1
+      },
+      {
+        "pitch": "C4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "D4",
+        "beats": 1
+      },
+      {
+        "pitch": "D4",
+        "beats": 1
+      },
+      {
+        "pitch": "C4",
+        "beats": 2
+      },
+      {
+        "pitch": "C4",
+        "beats": 1
+      },
+      {
+        "pitch": "C4",
+        "beats": 1
+      },
+      {
+        "pitch": "D4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "D4",
+        "beats": 1
+      },
+      {
+        "pitch": "C4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "D4",
+        "beats": 1
+      },
+      {
+        "pitch": "C4",
+        "beats": 3
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "D4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "F4",
+        "beats": 2
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "D4",
+        "beats": 1
+      },
+      {
+        "pitch": "C4",
+        "beats": 2
+      }
+    ],
+    "id": "bear",
+    "title": "森のくまさん",
+    "emoji": "🐻",
+    "reading": "もりくまさん",
+    "romaji": "morinokumasan",
+    "aliases": [
+      "熊",
+      "bear"
+    ],
+    "accent": "#8B5A2B",
+    "bpm": 108
+  },
+  {
+    "picture": "emoji",
+    "meter": [
+      4,
+      4
+    ],
+    "origin": {
+      "type": "builtin",
+      "label": "Traditional clapping song If You're Happy and You Know It. Four even phrases in C.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/If_You%27re_Happy_and_You_Know_It"
+    },
+    "melody": [
+      {
+        "pitch": "C4",
+        "beats": 1
+      },
+      {
+        "pitch": "C4",
+        "beats": 1
+      },
+      {
+        "pitch": "F4",
+        "beats": 1
+      },
+      {
+        "pitch": "F4",
+        "beats": 1
+      },
+      {
+        "pitch": "F4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "D4",
+        "beats": 1
+      },
+      {
+        "pitch": "C4",
+        "beats": 1
+      },
+      {
+        "pitch": "C4",
+        "beats": 1
+      },
+      {
+        "pitch": "C4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "F4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "D4",
+        "beats": 1
+      },
+      {
+        "pitch": "C4",
+        "beats": 1
+      },
+      {
+        "pitch": "C4",
+        "beats": 1
+      },
+      {
+        "pitch": "A4",
+        "beats": 1
+      },
+      {
+        "pitch": "A4",
+        "beats": 1
+      },
+      {
+        "pitch": "A4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "F4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "D4",
+        "beats": 1
+      },
+      {
+        "pitch": "D4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "F4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "D4",
+        "beats": 1
+      },
+      {
+        "pitch": "C4",
+        "beats": 1
+      }
+    ],
+    "id": "happy-clap",
+    "title": "しあわせなら手をたたこう",
+    "emoji": "👏",
+    "reading": "しあわせならてをたたこう",
+    "romaji": "shiawasenaratewotatakou",
+    "aliases": [
+      "幸せ",
+      "happy",
+      "clap"
+    ],
+    "accent": "#E23B4A",
+    "bpm": 108
+  },
+  {
+    "picture": "emoji",
+    "meter": [
+      3,
+      4
+    ],
+    "origin": {
+      "type": "builtin",
+      "label": "Happy Birthday to You (Patty and Mildred Hill). Public domain. Eighth pickups evened to quarters. The B-flat is written A#4 so the black key lights up.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Happy_Birthday_to_You"
+    },
+    "melody": [
+      {
+        "pitch": "C4",
+        "beats": 1
+      },
+      {
+        "pitch": "C4",
+        "beats": 1
+      },
+      {
+        "pitch": "D4",
+        "beats": 1
+      },
+      {
+        "pitch": "C4",
+        "beats": 1
+      },
+      {
+        "pitch": "F4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 2
+      },
+      {
+        "pitch": "C4",
+        "beats": 1
+      },
+      {
+        "pitch": "C4",
+        "beats": 1
+      },
+      {
+        "pitch": "D4",
+        "beats": 1
+      },
+      {
+        "pitch": "C4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "F4",
+        "beats": 2
+      },
+      {
+        "pitch": "C4",
+        "beats": 1
+      },
+      {
+        "pitch": "C4",
+        "beats": 1
+      },
+      {
+        "pitch": "C5",
+        "beats": 1
+      },
+      {
+        "pitch": "A4",
+        "beats": 1
+      },
+      {
+        "pitch": "F4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "D4",
+        "beats": 2
+      },
+      {
+        "pitch": "A#4",
+        "beats": 1
+      },
+      {
+        "pitch": "A#4",
+        "beats": 1
+      },
+      {
+        "pitch": "A4",
+        "beats": 1
+      },
+      {
+        "pitch": "F4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "F4",
+        "beats": 2
+      }
+    ],
+    "id": "birthday",
+    "title": "ハッピーバースデー",
+    "emoji": "🎂",
+    "reading": "はっぴーばーすでー",
+    "romaji": "happibasude",
+    "aliases": [
+      "誕生日",
+      "birthday",
+      "happy birthday"
+    ],
+    "accent": "#FF7A4A",
+    "bpm": 92
+  },
+  {
+    "picture": "emoji",
+    "meter": [
+      4,
+      4
+    ],
+    "origin": {
+      "type": "builtin",
+      "label": "James Pierpont, Jingle Bells (1857), chorus only, in C. Eighths evened to quarters.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Jingle_Bells"
+    },
+    "melody": [
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 2
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 2
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "C5",
+        "beats": 1
+      },
+      {
+        "pitch": "D4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 4
+      },
+      {
+        "pitch": "F4",
+        "beats": 1
+      },
+      {
+        "pitch": "F4",
+        "beats": 1
+      },
+      {
+        "pitch": "F4",
+        "beats": 1
+      },
+      {
+        "pitch": "F4",
+        "beats": 1
+      },
+      {
+        "pitch": "F4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "D4",
+        "beats": 1
+      },
+      {
+        "pitch": "D4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "D4",
+        "beats": 2
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 2
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 2
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "C5",
+        "beats": 1
+      },
+      {
+        "pitch": "D4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 4
+      },
+      {
+        "pitch": "F4",
+        "beats": 1
+      },
+      {
+        "pitch": "F4",
+        "beats": 1
+      },
+      {
+        "pitch": "F4",
+        "beats": 1
+      },
+      {
+        "pitch": "F4",
+        "beats": 1
+      },
+      {
+        "pitch": "F4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "F4",
+        "beats": 1
+      },
+      {
+        "pitch": "D4",
+        "beats": 1
+      },
+      {
+        "pitch": "C4",
+        "beats": 4
+      }
+    ],
+    "id": "jingle",
+    "title": "ジングルベル",
+    "emoji": "🔔",
+    "reading": "じんぐるべる",
+    "romaji": "jinguruberu",
+    "aliases": [
+      "鈴",
+      "jingle",
+      "jingle bells"
+    ],
+    "accent": "#C62828",
+    "bpm": 108
+  },
+  {
+    "picture": "emoji",
+    "meter": [
+      4,
+      4
+    ],
+    "origin": {
+      "type": "builtin",
+      "label": "German folk cuckoo song. School form ソミソミ レドレド, which stays inside C4–E5 (no low B).",
+      "sourceUrl": "https://ja.wikipedia.org/wiki/%E3%81%8B%E3%81%A3%E3%81%93%E3%81%86"
+    },
+    "melody": [
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "D4",
+        "beats": 1
+      },
+      {
+        "pitch": "C4",
+        "beats": 1
+      },
+      {
+        "pitch": "D4",
+        "beats": 1
+      },
+      {
+        "pitch": "C4",
+        "beats": 1
+      },
+      {
+        "pitch": "D4",
+        "beats": 1
+      },
+      {
+        "pitch": "D4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "F4",
+        "beats": 1
+      },
+      {
+        "pitch": "D4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "F4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "F4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "D4",
+        "beats": 1
+      },
+      {
+        "pitch": "C4",
+        "beats": 2
+      }
+    ],
+    "id": "cuckoo",
+    "title": "かっこう",
+    "emoji": "🐦",
+    "reading": "かっこう",
+    "romaji": "kakkou",
+    "aliases": [
+      "郭公",
+      "cuckoo"
+    ],
+    "accent": "#5C8A4E",
+    "bpm": 100
+  },
+  {
+    "picture": "emoji",
+    "meter": [
+      4,
+      4
+    ],
+    "origin": {
+      "type": "builtin",
+      "label": "岡野貞一 / 高野辰之, 文部省唱歌 (public domain). Opening ミソソ ラソミ only, rhythm evened, later phrases left out.",
+      "sourceUrl": "https://ja.wikipedia.org/wiki/%E3%81%B5%E3%82%8B%E3%81%95%E3%81%A8_(%E5%94%B1%E6%AD%8C)"
+    },
+    "melody": [
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "A4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 2
+      },
+      {
+        "pitch": "D4",
+        "beats": 1
+      },
+      {
+        "pitch": "C4",
+        "beats": 1
+      },
+      {
+        "pitch": "D4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 2
+      },
+      {
+        "pitch": "C4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "D4",
+        "beats": 1
+      },
+      {
+        "pitch": "C4",
+        "beats": 1
+      },
+      {
+        "pitch": "D4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "C4",
+        "beats": 2
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "A4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 2
+      },
+      {
+        "pitch": "D4",
+        "beats": 1
+      },
+      {
+        "pitch": "C4",
+        "beats": 1
+      },
+      {
+        "pitch": "D4",
+        "beats": 1
+      },
+      {
+        "pitch": "C4",
+        "beats": 2
+      }
+    ],
+    "id": "furusato",
+    "title": "ふるさと",
+    "emoji": "⛰️",
+    "reading": "ふるさと",
+    "romaji": "furusato",
+    "aliases": [
+      "故郷",
+      "hometown"
+    ],
+    "accent": "#3E6B4F",
+    "bpm": 84
+  },
+  {
+    "picture": "emoji",
+    "meter": [
+      4,
+      4
+    ],
+    "origin": {
+      "type": "builtin",
+      "label": "Japanese warabeuta. Common pentatonic version, rhythm evened to quarters.",
+      "sourceUrl": "https://ja.wikipedia.org/wiki/%E3%81%86%E3%81%95%E3%81%8E_(%E3%82%8F%E3%82%89%E3%81%B9%E3%81%86%E3%81%9F)"
+    },
+    "melody": [
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "A4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 2
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "A4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 2
+      },
+      {
+        "pitch": "C5",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "A4",
+        "beats": 1
+      },
+      {
+        "pitch": "G4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 2
+      },
+      {
+        "pitch": "D4",
+        "beats": 1
+      },
+      {
+        "pitch": "C4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "D4",
+        "beats": 1
+      },
+      {
+        "pitch": "C4",
+        "beats": 2
+      }
+    ],
+    "id": "rabbit",
+    "title": "うさぎ",
+    "emoji": "🐰",
+    "reading": "うさぎ",
+    "romaji": "usagi",
+    "aliases": [
+      "兎",
+      "rabbit"
+    ],
+    "accent": "#F4A3B5",
+    "bpm": 100
+  },
+  {
+    "picture": "emoji",
+    "meter": [
+      4,
+      4
+    ],
+    "origin": {
+      "type": "builtin",
+      "label": "Traditional Japanese song さくらさくら, in-sen / pentatonic form on A. No sharps.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Sakura_Sakura"
+    },
+    "melody": [
+      {
+        "pitch": "A4",
+        "beats": 1
+      },
+      {
+        "pitch": "A4",
+        "beats": 1
+      },
+      {
+        "pitch": "B4",
+        "beats": 1
+      },
+      {
+        "pitch": "A4",
+        "beats": 1
+      },
+      {
+        "pitch": "C5",
+        "beats": 1
+      },
+      {
+        "pitch": "B4",
+        "beats": 1
+      },
+      {
+        "pitch": "A4",
+        "beats": 2
+      },
+      {
+        "pitch": "A4",
+        "beats": 1
+      },
+      {
+        "pitch": "A4",
+        "beats": 1
+      },
+      {
+        "pitch": "B4",
+        "beats": 1
+      },
+      {
+        "pitch": "A4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "A4",
+        "beats": 2
+      },
+      {
+        "pitch": "C5",
+        "beats": 1
+      },
+      {
+        "pitch": "C5",
+        "beats": 1
+      },
+      {
+        "pitch": "D5",
+        "beats": 1
+      },
+      {
+        "pitch": "C5",
+        "beats": 1
+      },
+      {
+        "pitch": "B4",
+        "beats": 1
+      },
+      {
+        "pitch": "A4",
+        "beats": 1
+      },
+      {
+        "pitch": "B4",
+        "beats": 2
+      },
+      {
+        "pitch": "A4",
+        "beats": 1
+      },
+      {
+        "pitch": "A4",
+        "beats": 1
+      },
+      {
+        "pitch": "B4",
+        "beats": 1
+      },
+      {
+        "pitch": "A4",
+        "beats": 1
+      },
+      {
+        "pitch": "E4",
+        "beats": 1
+      },
+      {
+        "pitch": "A4",
+        "beats": 2
+      }
+    ],
+    "id": "sakura",
+    "title": "さくらさくら",
+    "emoji": "🌸",
+    "reading": "さくらさくら",
+    "romaji": "sakurasakura",
+    "aliases": [
+      "桜",
+      "cherry"
+    ],
+    "accent": "#E86A92",
+    "bpm": 72
   }
 ]

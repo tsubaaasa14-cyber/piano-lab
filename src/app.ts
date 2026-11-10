@@ -1,8 +1,10 @@
-import { artFor, backIcon, mascotSvg, playIcon, rotateHintSvg, speakerOffIcon, speakerOnIcon, stopIcon } from './art';
+import { backIcon, mascotSvg, playIcon, rotateHintSvg, speakerOffIcon, speakerOnIcon, stopIcon } from './art';
 import { PianoAudio } from './audio';
-import { buildKeyboard, KEYBOARD_END, KEYBOARD_START } from './pitch';
+import { buildKeyboard, KEYBOARD_END, KEYBOARD_START, keyboardPitch } from './pitch';
 import { Player } from './player';
+import { recentIds, rememberSong } from './recent';
 import { renderScore, centerNote } from './score';
+import { filterSongs } from './search';
 import { songs } from './songs';
 import type { Song } from './types';
 
@@ -28,6 +30,7 @@ function html(parent: HTMLElement, markup: string): void {
 export function mount(root: HTMLElement): void {
   const audio = new PianoAudio();
   const player = new Player(audio);
+  let query = '';
   let screen: { name: 'home' } | { name: 'practice'; song: Song } = { name: 'home' };
   let shown: number | null = null;
   let playing = false;
@@ -70,9 +73,10 @@ export function mount(root: HTMLElement): void {
     }
 
     const pitch = index == null || screen.name !== 'practice' ? null : screen.song.melody[index]?.pitch;
+    const lit = pitch ? keyboardPitch(pitch) : null;
     for (const key of practice.querySelectorAll('.key')) {
       if (!(key instanceof HTMLElement)) continue;
-      const on = !!pitch && key.dataset.pitch === pitch;
+      const on = !!lit && key.dataset.pitch === lit;
       if (on && key.classList.contains('is-current')) {
         key.classList.remove('is-current');
         void key.offsetWidth;
@@ -106,6 +110,24 @@ export function mount(root: HTMLElement): void {
     }
   };
 
+  function songCard(song: Song): HTMLButtonElement {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'song-card';
+    button.dataset.songId = song.id;
+    button.style.setProperty('--card', song.accent);
+    button.setAttribute('aria-label', song.title);
+    const art = document.createElement('span');
+    art.className = 'song-emoji';
+    art.textContent = song.emoji;
+    art.setAttribute('aria-hidden', 'true');
+    const name = document.createElement('span');
+    name.className = 'song-name';
+    name.textContent = song.title;
+    button.append(art, name);
+    return button;
+  }
+
   function showHome(): void {
     player.stop();
     playing = false;
@@ -113,37 +135,89 @@ export function mount(root: HTMLElement): void {
     screen = { name: 'home' };
     root.replaceChildren();
     const home = document.createElement('section');
-    home.className = 'home';
+    home.className = 'home picker';
+
     const top = document.createElement('div');
-    top.className = 'home-top';
+    top.className = 'picker-top';
+    const brand = document.createElement('div');
+    brand.className = 'home-top';
     const mascot = document.createElement('div');
     mascot.className = 'mascot';
     mascot.innerHTML = mascotSvg();
     const title = document.createElement('h1');
     title.className = 'home-title';
     title.textContent = 'ぴあの';
-    top.append(mascot, title);
-    const cards = document.createElement('div');
-    cards.className = 'home-cards';
-    for (const song of songs) {
-      const button = document.createElement('button');
-      button.type = 'button';
-      button.className = 'song-card';
-      button.dataset.songId = song.id;
-      button.style.setProperty('--card', song.accent);
-      button.setAttribute('aria-label', song.title);
-      const art = document.createElement('span');
-      art.className = 'song-art';
-      art.innerHTML = artFor(song.picture);
-      const name = document.createElement('span');
-      name.className = 'song-name';
-      name.textContent = song.title;
-      button.append(art, name);
-      cards.append(button);
-    }
-    home.append(top, cards);
+    brand.append(mascot, title);
+
+    const search = document.createElement('label');
+    search.className = 'search';
+    const field = document.createElement('input');
+    field.className = 'search-input';
+    field.type = 'text';
+    field.enterKeyHint = 'search';
+    field.autocomplete = 'off';
+    field.autocapitalize = 'off';
+    field.spellcheck = false;
+    field.placeholder = 'うた、かえる、kaeru';
+    field.setAttribute('aria-label', 'うたをさがす');
+    field.value = query;
+    const clear = document.createElement('button');
+    clear.type = 'button';
+    clear.className = 'search-clear';
+    clear.dataset.action = 'clear';
+    clear.setAttribute('aria-label', 'けす');
+    clear.textContent = '×';
+    search.append(field, clear);
+    top.append(brand, search);
+
+    const scroller = document.createElement('div');
+    scroller.className = 'picker-scroll';
+    home.append(top, scroller);
     root.append(home, soundButton(), turnHint());
     refreshSound();
+
+    const paint = () => {
+      query = field.value;
+      clear.hidden = query.length === 0;
+      scroller.replaceChildren();
+      const needle = query.trim();
+      if (!needle) {
+        const recentSongs = recentIds().flatMap((id) => {
+          const song = songs.find((item) => item.id === id);
+          return song ? [song] : [];
+        });
+        if (recentSongs.length > 0) {
+          const block = document.createElement('div');
+          block.className = 'recent';
+          const heading = document.createElement('h2');
+          heading.className = 'recent-title';
+          heading.textContent = 'このまえ';
+          const row = document.createElement('div');
+          row.className = 'recent-scroll';
+          for (const song of recentSongs) row.append(songCard(song));
+          block.append(heading, row);
+          scroller.append(block);
+        }
+      }
+      const found = filterSongs(songs, query);
+      if (found.length === 0) {
+        const empty = document.createElement('div');
+        empty.className = 'empty';
+        empty.innerHTML = mascotSvg();
+        const message = document.createElement('p');
+        message.className = 'empty-text';
+        message.textContent = 'みつからない';
+        empty.append(message);
+        scroller.append(empty);
+        return;
+      }
+      const grid = document.createElement('div');
+      grid.className = 'song-grid';
+      for (const song of found) grid.append(songCard(song));
+      scroller.append(grid);
+    };
+    field.addEventListener('input', paint);
+    paint();
   }
 
   function showPractice(song: Song): void {
@@ -151,6 +225,7 @@ export function mount(root: HTMLElement): void {
     playing = false;
     shown = null;
     screen = { name: 'practice', song };
+    rememberSong(song.id);
     warnOutOfRange(song);
     root.replaceChildren();
 
@@ -169,7 +244,11 @@ export function mount(root: HTMLElement): void {
     now.className = 'now-playing';
     const mini = document.createElement('div');
     mini.className = 'mini-art';
-    mini.innerHTML = artFor(song.picture);
+    const face = document.createElement('span');
+    face.className = 'emoji-art';
+    face.textContent = song.emoji;
+    face.setAttribute('aria-hidden', 'true');
+    mini.append(face);
     const heading = document.createElement('h2');
     heading.className = 'now-title';
     heading.textContent = song.title;
@@ -309,6 +388,15 @@ export function mount(root: HTMLElement): void {
       return;
     }
     if (!(action instanceof HTMLElement)) return;
+    if (action.dataset.action === 'clear') {
+      const field = root.querySelector('.search-input');
+      if (field instanceof HTMLInputElement) {
+        field.value = '';
+        field.dispatchEvent(new Event('input'));
+        field.focus();
+      }
+      return;
+    }
     if (action.dataset.action === 'sound') {
       unlock();
       return;

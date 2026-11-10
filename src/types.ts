@@ -27,9 +27,17 @@ export interface Song {
   id: string;
   /** Shown for a parent. Children pick the picture, not the words. */
   title: string;
+  /** Full hiragana reading, used by search. */
+  reading: string;
+  /** Romaji without spaces, so "kaeru" matches かえるのうた. */
+  romaji: string;
+  /** Extra search strings: kanji, English, short names. */
+  aliases: string[];
+  /** Big picture on the card. */
+  emoji: string;
   /**
-   * Built-in picture id: "star", "frog", or "tulip".
-   * Anything else falls back to the star, so generated songs still render.
+   * Optional built-in illustration id: "star", "frog", or "tulip".
+   * "emoji" means the card uses `emoji` only.
    */
   picture: string;
   /** Card color as a #RRGGBB hex. */
