@@ -1,0 +1,296 @@
+import { artFor, backIcon, mascotSvg, playIcon, rotateHintSvg, stopIcon } from './art';
+import { PianoAudio } from './audio';
+import { buildKeyboard, KEYBOARD_END, KEYBOARD_START } from './pitch';
+import { Player } from './player';
+import { renderScore, centerNote } from './score';
+import { songs } from './songs';
+import type { Song } from './types';
+
+const keys = buildKeyboard();
+const keyPitches = new Set(keys.map((key) => key.pitch));
+
+function warnOutOfRange(song: Song): void {
+  if (!import.meta.env.DEV) return;
+  for (const note of song.melody) {
+    if (note.pitch && !keyPitches.has(note.pitch)) {
+      console.warn(`${song.id}: ${note.pitch} is outside the keyboard ${KEYBOARD_START}–${KEYBOARD_END}`);
+    }
+  }
+}
+
+function html(parent: HTMLElement, markup: string): void {
+  const holder = document.createElement('div');
+  holder.innerHTML = markup;
+  const node = holder.firstElementChild;
+  if (node) parent.append(node);
+}
+
+export function mount(root: HTMLElement): void {
+  const audio = new PianoAudio();
+  const player = new Player(audio);
+  let screen: { name: 'home' } | { name: 'practice'; song: Song } = { name: 'home' };
+  let shown: number | null = null;
+  let playing = false;
+
+  root.addEventListener(
+    'pointerdown',
+    () => {
+      try {
+        audio.unlockSync();
+      } catch (error) {
+        console.error(error);
+      }
+    },
+    { capture: true },
+  );
+
+  function applyHighlight(index: number | null): void {
+    const practice = root.querySelector('.practice');
+    if (!(practice instanceof HTMLElement)) return;
+    if (index == null) delete practice.dataset.noteIndex;
+    else practice.dataset.noteIndex = String(index);
+    practice.classList.toggle('is-playing', playing);
+
+    for (const note of practice.querySelectorAll('.note')) {
+      const noteIndex = Number(note.getAttribute('data-index'));
+      note.classList.toggle('is-current', index !== null && noteIndex === index);
+      note.classList.toggle('is-past', index !== null && noteIndex < index);
+    }
+
+    const pitch = index == null || screen.name !== 'practice' ? null : screen.song.melody[index]?.pitch;
+    for (const key of practice.querySelectorAll('.key')) {
+      if (!(key instanceof HTMLElement)) continue;
+      const on = !!pitch && key.dataset.pitch === pitch;
+      if (on && key.classList.contains('is-current')) {
+        key.classList.remove('is-current');
+        void key.offsetWidth;
+      }
+      key.classList.toggle('is-current', on);
+    }
+  }
+
+  function scrollTo(index: number): void {
+    const scroller = root.querySelector('.score-scroll');
+    if (scroller instanceof HTMLElement) centerNote(scroller, index);
+  }
+
+  player.onIndex = (index) => {
+    if (index === shown) return;
+    shown = index;
+    applyHighlight(index);
+    if (index == null) scrollTo(0);
+    else scrollTo(index);
+  };
+
+  player.onState = (next) => {
+    playing = next;
+    const practice = root.querySelector('.practice');
+    const button = root.querySelector('[data-action="play"]');
+    practice?.classList.toggle('is-playing', next);
+    button?.classList.toggle('is-playing', next);
+    if (button instanceof HTMLButtonElement) {
+      button.setAttribute('aria-label', next ? 'とめる' : 'うたをならす');
+      button.setAttribute('aria-pressed', next ? 'true' : 'false');
+    }
+  };
+
+  function showHome(): void {
+    player.stop();
+    playing = false;
+    shown = null;
+    screen = { name: 'home' };
+    root.replaceChildren();
+    const home = document.createElement('section');
+    home.className = 'home';
+    const top = document.createElement('div');
+    top.className = 'home-top';
+    const mascot = document.createElement('div');
+    mascot.className = 'mascot';
+    mascot.innerHTML = mascotSvg();
+    const title = document.createElement('h1');
+    title.className = 'home-title';
+    title.textContent = 'ぴあの';
+    top.append(mascot, title);
+    const cards = document.createElement('div');
+    cards.className = 'home-cards';
+    for (const song of songs) {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'song-card';
+      button.dataset.songId = song.id;
+      button.style.setProperty('--card', song.accent);
+      button.setAttribute('aria-label', song.title);
+      const art = document.createElement('span');
+      art.className = 'song-art';
+      art.innerHTML = artFor(song.picture);
+      const name = document.createElement('span');
+      name.className = 'song-name';
+      name.textContent = song.title;
+      button.append(art, name);
+      cards.append(button);
+    }
+    home.append(top, cards);
+    root.append(home);
+    root.append(turnHint());
+  }
+
+  function showPractice(song: Song): void {
+    player.stop();
+    playing = false;
+    shown = null;
+    screen = { name: 'practice', song };
+    warnOutOfRange(song);
+    root.replaceChildren();
+
+    const practice = document.createElement('section');
+    practice.className = 'practice';
+
+    const top = document.createElement('header');
+    top.className = 'topbar';
+    const back = document.createElement('button');
+    back.type = 'button';
+    back.className = 'back';
+    back.dataset.action = 'back';
+    back.setAttribute('aria-label', 'もどる');
+    back.innerHTML = backIcon();
+    const now = document.createElement('div');
+    now.className = 'now-playing';
+    const mini = document.createElement('div');
+    mini.className = 'mini-art';
+    mini.innerHTML = artFor(song.picture);
+    const heading = document.createElement('h2');
+    heading.className = 'now-title';
+    heading.textContent = song.title;
+    now.append(mini, heading);
+    top.append(back, now);
+
+    const scoreWrap = document.createElement('div');
+    scoreWrap.className = 'score-wrap';
+    const scroller = document.createElement('div');
+    scroller.className = 'score-scroll';
+    scroller.append(renderScore(song));
+    const playhead = document.createElement('div');
+    playhead.className = 'playhead';
+    playhead.setAttribute('aria-hidden', 'true');
+    playhead.innerHTML = mascotSvg();
+    scoreWrap.append(scroller, playhead);
+
+    const piano = document.createElement('div');
+    piano.className = 'piano';
+    const fallboard = document.createElement('div');
+    fallboard.className = 'fallboard';
+    const frame = document.createElement('div');
+    frame.className = 'keys-frame';
+    const row = document.createElement('div');
+    const whiteCount = keys.filter((key) => !key.black).length;
+    row.className = 'keys';
+    row.style.setProperty('--white-count', String(whiteCount));
+
+    for (const spec of keys.filter((key) => !key.black)) {
+      row.append(keyButton(spec, false));
+    }
+    for (const spec of keys.filter((key) => key.black)) {
+      const button = keyButton(spec, true);
+      button.style.setProperty('--after', String(spec.after ?? 0));
+      row.append(button);
+    }
+    frame.append(row);
+    piano.append(fallboard, frame);
+
+    const dock = document.createElement('footer');
+    dock.className = 'dock';
+    const play = document.createElement('button');
+    play.type = 'button';
+    play.className = 'play';
+    play.dataset.action = 'play';
+    play.setAttribute('aria-label', 'うたをならす');
+    play.setAttribute('aria-pressed', 'false');
+    html(play, playIcon());
+    html(play, stopIcon());
+    dock.append(play);
+
+    practice.append(top, scoreWrap, piano, dock);
+    root.append(practice, turnHint());
+    requestAnimationFrame(() => scrollTo(0));
+  }
+
+  function keyButton(spec: (typeof keys)[number], black: boolean): HTMLButtonElement {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = black ? 'key black-key' : 'key white-key';
+    button.dataset.pitch = spec.pitch;
+    button.style.setProperty('--key', spec.color);
+    button.style.setProperty('--ink', spec.ink);
+    button.setAttribute('aria-label', spec.label);
+    const gem = document.createElement('span');
+    gem.className = [...spec.label].length > 1 ? 'gem gem-wide' : 'gem';
+    gem.textContent = black ? '' : spec.label;
+    if (black) gem.setAttribute('aria-hidden', 'true');
+    button.append(gem);
+    button.addEventListener('pointerdown', (event) => {
+      if (event.button > 0) return;
+      event.preventDefault();
+      button.classList.add('is-pressed');
+      try {
+        audio.unlockSync();
+        audio.play(spec.pitch, audio.context.currentTime + 0.02, 0.55, 'tap');
+      } catch (error) {
+        console.error(error);
+      }
+    });
+    const release = () => button.classList.remove('is-pressed');
+    button.addEventListener('pointerup', release);
+    button.addEventListener('pointercancel', release);
+    button.addEventListener('pointerleave', release);
+    button.addEventListener('keydown', (event) => {
+      if (event.repeat) return;
+      if (event.key !== 'Enter' && event.key !== ' ') return;
+      event.preventDefault();
+      try {
+        audio.unlockSync();
+        audio.play(spec.pitch, audio.context.currentTime + 0.02, 0.55, 'tap');
+      } catch (error) {
+        console.error(error);
+      }
+    });
+    return button;
+  }
+
+  root.addEventListener('click', (event) => {
+    const target = event.target;
+    if (!(target instanceof Element)) return;
+    const songButton = target.closest('[data-song-id]');
+    if (songButton instanceof HTMLElement && songButton.dataset.songId) {
+      const song = songs.find((item) => item.id === songButton.dataset.songId);
+      if (song) showPractice(song);
+      return;
+    }
+    const action = target.closest('[data-action]');
+    if (!(action instanceof HTMLElement)) return;
+    if (action.dataset.action === 'back') {
+      showHome();
+      return;
+    }
+    if (action.dataset.action === 'play' && screen.name === 'practice') {
+      if (playing) player.stop();
+      else {
+        shown = null;
+        player.start(screen.song);
+      }
+    }
+  });
+
+  window.addEventListener('resize', () => {
+    if (screen.name !== 'practice') return;
+    scrollTo(shown ?? 0);
+  });
+
+  showHome();
+}
+
+function turnHint(): HTMLElement {
+  const hint = document.createElement('div');
+  hint.className = 'turn';
+  hint.innerHTML = rotateHintSvg();
+  return hint;
+}
