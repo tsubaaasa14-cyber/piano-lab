@@ -111,6 +111,14 @@ export function stopIcon(): string {
   return `<svg class="icon-stop" viewBox="0 0 48 48" aria-hidden="true"><rect x="13" y="13" width="22" height="22" rx="5" fill="#fff"/></svg>`;
 }
 
+export function speakerOnIcon(): string {
+  return `<svg class="icon-on" viewBox="0 0 48 48" aria-hidden="true"><path d="M8 18 H16 L26 10 V38 L16 30 H8 Z" fill="currentColor"/><path d="M32 17 C36 21 36 27 32 31" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M36 12 C43 18 43 30 36 36" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></svg>`;
+}
+
+export function speakerOffIcon(): string {
+  return `<svg class="icon-off" viewBox="0 0 48 48" aria-hidden="true"><path d="M8 18 H16 L26 10 V38 L16 30 H8 Z" fill="currentColor"/><path d="M32 18 L42 30 M42 18 L32 30" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></svg>`;
+}
+
 export function rotateHintSvg(): string {
   return `<svg viewBox="0 0 340 230" aria-hidden="true">
     <path d="M86 36 A 58 58 0 1 0 86 168" fill="none" stroke="#2E96FF" stroke-width="14" stroke-linecap="round"/>

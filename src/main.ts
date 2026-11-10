@@ -32,9 +32,29 @@ document.addEventListener(
 );
 
 if (import.meta.env.PROD && 'serviceWorker' in navigator) {
+  const hadController = !!navigator.serviceWorker.controller;
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register(`${import.meta.env.BASE_URL}sw.js`).catch((error) => {
-      console.error(error);
-    });
+    const swUrl = `${import.meta.env.BASE_URL}sw.js`;
+    const register = () =>
+      navigator.serviceWorker.register(swUrl, { updateViaCache: 'none' }).catch(() => navigator.serviceWorker.register(swUrl));
+    register()
+      .then((registration) => {
+        if (!hadController || !registration) return;
+        // A home-screen iPad keeps running the previous script until reload.
+        const watch = (worker: ServiceWorker | null) => {
+          worker?.addEventListener('statechange', () => {
+            if (worker.state === 'activated') window.location.reload();
+          });
+        };
+        watch(registration.installing);
+        registration.addEventListener('updatefound', () => watch(registration.installing));
+        document.addEventListener('visibilitychange', () => {
+          if (document.visibilityState === 'visible') void registration.update();
+        });
+        void registration.update();
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   });
 }

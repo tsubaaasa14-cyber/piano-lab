@@ -1,4 +1,4 @@
-import { artFor, backIcon, mascotSvg, playIcon, rotateHintSvg, stopIcon } from './art';
+import { artFor, backIcon, mascotSvg, playIcon, rotateHintSvg, speakerOffIcon, speakerOnIcon, stopIcon } from './art';
 import { PianoAudio } from './audio';
 import { buildKeyboard, KEYBOARD_END, KEYBOARD_START } from './pitch';
 import { Player } from './player';
@@ -32,17 +32,29 @@ export function mount(root: HTMLElement): void {
   let shown: number | null = null;
   let playing = false;
 
-  root.addEventListener(
-    'pointerdown',
-    () => {
-      try {
-        audio.unlockSync();
-      } catch (error) {
-        console.error(error);
-      }
-    },
-    { capture: true },
-  );
+  const unlock = () => {
+    try {
+      audio.unlockSync();
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  // click and touchend are the gestures iOS treats as activation. pointerdown
+  // is included too, but it must not be the only one, and it must not cancel the click.
+  for (const type of ['pointerdown', 'pointerup', 'touchend', 'click'] as const) {
+    root.addEventListener(type, unlock, { capture: true });
+  }
+
+  const refreshSound = () => {
+    const ready = audio.outputReady();
+    const state = audio.stateName();
+    for (const button of root.querySelectorAll<HTMLButtonElement>('.sound')) {
+      button.classList.toggle('is-ready', ready);
+      button.dataset.state = state;
+      button.setAttribute('aria-label', ready ? 'おんがく' : 'おとをだす');
+    }
+  };
+  audio.onStatus(refreshSound);
 
   function applyHighlight(index: number | null): void {
     const practice = root.querySelector('.practice');
@@ -130,8 +142,8 @@ export function mount(root: HTMLElement): void {
       cards.append(button);
     }
     home.append(top, cards);
-    root.append(home);
-    root.append(turnHint());
+    root.append(home, soundButton(), turnHint());
+    refreshSound();
   }
 
   function showPractice(song: Song): void {
@@ -210,7 +222,8 @@ export function mount(root: HTMLElement): void {
     dock.append(play);
 
     practice.append(top, scoreWrap, piano, dock);
-    root.append(practice, turnHint());
+    root.append(practice, soundButton(), turnHint());
+    refreshSound();
     requestAnimationFrame(() => scrollTo(0));
   }
 
@@ -227,58 +240,94 @@ export function mount(root: HTMLElement): void {
     gem.textContent = black ? '' : spec.label;
     if (black) gem.setAttribute('aria-hidden', 'true');
     button.append(gem);
-    button.addEventListener('pointerdown', (event) => {
-      if (event.button > 0) return;
-      event.preventDefault();
-      button.classList.add('is-pressed');
-      try {
-        audio.unlockSync();
-        audio.play(spec.pitch, audio.context.currentTime + 0.02, 0.55, 'tap');
-      } catch (error) {
-        console.error(error);
-      }
-    });
     const release = () => button.classList.remove('is-pressed');
     button.addEventListener('pointerup', release);
     button.addEventListener('pointercancel', release);
     button.addEventListener('pointerleave', release);
+    // No preventDefault here: cancelling pointerdown/touchstart drops iOS user activation.
+    button.addEventListener('pointerdown', (event) => {
+      if (event.button > 0) return;
+      button.classList.add('is-pressed');
+      soundKey(spec.pitch);
+    });
+    button.addEventListener('touchend', () => soundKey(spec.pitch));
+    button.addEventListener('click', () => soundKey(spec.pitch));
     button.addEventListener('keydown', (event) => {
       if (event.repeat) return;
       if (event.key !== 'Enter' && event.key !== ' ') return;
       event.preventDefault();
-      try {
-        audio.unlockSync();
-        audio.play(spec.pitch, audio.context.currentTime + 0.02, 0.55, 'tap');
-      } catch (error) {
-        console.error(error);
-      }
+      soundKey(spec.pitch);
     });
     return button;
   }
 
-  root.addEventListener('click', (event) => {
+  let lastKey: { pitch: string; at: number } | null = null;
+  function soundKey(pitch: string): void {
+    const now = performance.now();
+    if (lastKey && lastKey.pitch === pitch && now - lastKey.at < 280) return;
+    let ctx: AudioContext;
+    try {
+      audio.unlockSync();
+      ctx = audio.context;
+    } catch (error) {
+      console.error(error);
+      return;
+    }
+    const fire = () => {
+      if (ctx.state !== 'running') return;
+      const at = performance.now();
+      if (lastKey && lastKey.pitch === pitch && at - lastKey.at < 280) return;
+      lastKey = { pitch, at };
+      audio.play(pitch, ctx.currentTime + 0.03, 0.55, 'tap');
+    };
+    if (ctx.state === 'running') fire();
+    else void ctx.resume().then(fire);
+  }
+
+  let lastUi: { key: string; at: number } | null = null;
+  function onActivate(event: Event): void {
     const target = event.target;
     if (!(target instanceof Element)) return;
     const songButton = target.closest('[data-song-id]');
+    const action = target.closest('[data-action]');
+    if (!songButton && !action) return;
+    const key = songButton instanceof HTMLElement && songButton.dataset.songId
+      ? `song:${songButton.dataset.songId}`
+      : action instanceof HTMLElement
+        ? `action:${action.dataset.action}`
+        : '';
+    const now = performance.now();
+    // Ignore the click that follows touchend once sound is actually running.
+    // If the context is still suspended, let the later click try again.
+    if (lastUi && lastUi.key === key && now - lastUi.at < 450 && audio.outputReady()) return;
+    lastUi = { key, at: now };
+    const navigates = Boolean(songButton) || (action instanceof HTMLElement && action.dataset.action === 'back');
+    if (navigates && event.type === 'touchend' && event.cancelable) event.preventDefault();
     if (songButton instanceof HTMLElement && songButton.dataset.songId) {
       const song = songs.find((item) => item.id === songButton.dataset.songId);
       if (song) showPractice(song);
       return;
     }
-    const action = target.closest('[data-action]');
     if (!(action instanceof HTMLElement)) return;
+    if (action.dataset.action === 'sound') {
+      unlock();
+      return;
+    }
     if (action.dataset.action === 'back') {
       showHome();
       return;
     }
     if (action.dataset.action === 'play' && screen.name === 'practice') {
+      unlock();
       if (playing) player.stop();
       else {
         shown = null;
         player.start(screen.song);
       }
     }
-  });
+  }
+  root.addEventListener('touchend', onActivate);
+  root.addEventListener('click', onActivate);
 
   window.addEventListener('resize', () => {
     if (screen.name !== 'practice') return;
@@ -286,6 +335,21 @@ export function mount(root: HTMLElement): void {
   });
 
   showHome();
+}
+
+function soundButton(): HTMLButtonElement {
+  const button = document.createElement('button');
+  button.type = 'button';
+  button.className = 'sound';
+  button.dataset.action = 'sound';
+  button.dataset.state = 'idle';
+  button.setAttribute('aria-label', 'おとをだす');
+  const on = document.createElement('span');
+  on.innerHTML = speakerOnIcon();
+  const off = document.createElement('span');
+  off.innerHTML = speakerOffIcon();
+  button.append(on, off);
+  return button;
 }
 
 function turnHint(): HTMLElement {

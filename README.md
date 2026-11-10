@@ -21,7 +21,7 @@ Colors match the usual kindergarten solfege: ド red, レ orange, ミ yellow, �
 3. Open ぴあの from the home screen, turn the iPad sideways, tap a picture, then tap the big green button.
 4. The child can also tap the keys. Sound starts on the first tap — Safari will not play audio before that.
 
-If there is no sound, turn the volume up with the side buttons and tap the screen once, then press the green button again. The silent switch usually does not mute this app, because it uses Web Audio rather than a video or audio file.
+If there is no sound, turn the volume up with the side buttons and tap the speaker icon in the corner, then press the green button again. iPad silent mode and the iPhone Ring/Silent switch mute Web Audio unless the page asks for playback. After an update, reload in Safari; if the home-screen icon still seems old, delete it and add it again.
 
 ## Song data
 
@@ -81,13 +81,13 @@ This repository is private, and the automation token cannot change Pages setting
 2. GitHub Free serves Pages only for **public** repositories. Either make this repo public, or use a plan that includes Pages for private repos (GitHub Pro, Team, or Enterprise). On a user account the Pages site is still reachable by anyone who has the URL, even when the repo is private.
 3. In the repo: **Settings → Pages → Build and deployment → Source: GitHub Actions**.
 
-Until those are done, there is no live site.
+The live site is https://tsubaaasa14-cyber.github.io/piano-lab/.
 
 ## iOS Safari notes
 
-- Audio will not start until a tap. The app calls `AudioContext.resume()` inside that tap.
-- The silent switch usually does not mute Web Audio. The volume buttons do.
-- Add to Home Screen uses the apple touch icon and `apple-mobile-web-app-capable`. The service worker caches the app for offline use after one online visit. iOS may drop that cache later; open the page online again if it looks stale.
+- Audio will not start until a tap. The app calls `AudioContext.resume()` and plays a silent looping media element inside `click` / `touchend`, and again on later taps if the context is `suspended` or `interrupted`.
+- Safari's default audio session is ambient, so the iPhone silent switch and iPad silent mode mute Web Audio. The page sets `navigator.audioSession.type = 'playback'` where that API exists (iOS 17+). The volume buttons still matter. A speaker icon in the corner is crossed out until the context is running; tap it to try again.
+- Add to Home Screen uses the apple touch icon and `apple-mobile-web-app-capable`. The service worker caches hashed files for offline use and checks for a new `sw.js` with `updateViaCache: 'none'`. When an update activates, the page reloads once. iOS can still keep a home-screen snapshot: delete the icon and add it again if the speaker icon never appears.
 - Portrait shows a “turn the iPad” picture. The manifest asks for landscape; Safari does not always honor that.
 - Pinch-zoom and scroll bounce are blocked while the page is open. The score can still be swiped sideways.
 - Newer iOS sometimes ignores `user-scalable=no`. `touch-action` and gesture handlers cover the usual pinch.
