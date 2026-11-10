@@ -46,6 +46,13 @@ export interface Song {
   bpm: number;
   /** [beats per bar, beat unit]. Beat unit 4 = quarter note, as in 4/4. */
   meter: [number, number];
+  /**
+   * Official video. When set, the practice screen can play this video and
+   * light notes from its clock. `startSec` is when `melody[0]` begins.
+   */
+  youtubeId?: string;
+  /** Seconds into the YouTube video where the first melody note starts. */
+  startSec?: number;
   melody: MelodyNote[];
   origin: SongOrigin;
 }

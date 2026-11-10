@@ -5,7 +5,7 @@
  * ぞうさん and いぬのおまわりさん are still in copyright, so they are not included.
  * うみ is omitted for the same reason (often credited to 井上武士).
  */
-import { writeFileSync } from 'node:fs';
+import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -419,6 +419,17 @@ const songs = [
 
 if (songs.length < 20) throw new Error(`expected about 20 songs, got ${songs.length}`);
 
-const file = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../src/data/songs.json');
-writeFileSync(file, `${JSON.stringify(songs, null, 2)}\n`);
-console.log(`wrote ${songs.length} songs`);
+const dir = path.dirname(fileURLToPath(import.meta.url));
+const extractedFile = path.resolve(dir, '../src/data/extracted.json');
+const extracted = existsSync(extractedFile) ? JSON.parse(readFileSync(extractedFile, 'utf8')) : [];
+if (!Array.isArray(extracted)) throw new Error('extracted.json must be an array');
+const all = [...songs, ...extracted];
+const ids = new Set();
+for (const song of all) {
+  if (ids.has(song.id)) throw new Error(`duplicate song id ${song.id}`);
+  ids.add(song.id);
+}
+
+const file = path.resolve(dir, '../src/data/songs.json');
+writeFileSync(file, `${JSON.stringify(all, null, 2)}\n`);
+console.log(`wrote ${all.length} songs`);

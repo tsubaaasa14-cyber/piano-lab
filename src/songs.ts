@@ -56,6 +56,19 @@ function parseSong(value: unknown, index: number): Song {
   if (!Array.isArray(value.melody) || value.melody.length === 0 || value.melody.length > 512) {
     throw new Error(`${label}.melody must have 1–512 notes`);
   }
+  let youtubeId: string | undefined;
+  if (value.youtubeId !== undefined) {
+    youtubeId = requireString(value.youtubeId, `${label}.youtubeId`);
+    if (!/^[A-Za-z0-9_-]{6,16}$/.test(youtubeId)) throw new Error(`${label}.youtubeId is invalid`);
+  }
+  let startSec: number | undefined;
+  if (value.startSec !== undefined) {
+    if (typeof value.startSec !== 'number' || !Number.isFinite(value.startSec) || value.startSec < 0 || value.startSec > 1800) {
+      throw new Error(`${label}.startSec is invalid`);
+    }
+    startSec = value.startSec;
+  }
+  if (youtubeId && startSec === undefined) throw new Error(`${label} with youtubeId needs startSec`);
   const aliases = value.aliases === undefined ? [] : value.aliases;
   if (!Array.isArray(aliases) || aliases.some((item) => typeof item !== 'string' || item.trim() === '')) {
     throw new Error(`${label}.aliases must be non-empty strings`);
@@ -73,6 +86,7 @@ function parseSong(value: unknown, index: number): Song {
     meter: [beatsPerBar, unit],
     melody: value.melody.map((note, noteIndex) => parseNote(note, `${label}.melody[${noteIndex}]`)),
     origin: parseOrigin(value.origin, label),
+    ...(youtubeId ? { youtubeId, startSec } : {}),
   };
 }
 

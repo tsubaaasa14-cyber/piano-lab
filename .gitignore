@@ -3,3 +3,12 @@ dist
 .DS_Store
 *.log
 proof-output
+__pycache__/
+*.pyc
+
+# Local recordings and yt-dlp cookies for tools/add-song. Never commit these.
+uploads/
+tools/add-song/.venv/
+tools/add-song/work/
+cookies.txt
+**/cookies.txt
